@@ -5,7 +5,7 @@ function useInput(initialState) {
 
   const handler = ({target}) => {
     setValue((prev)=>{
-      return {...prev, [target.className]: target.value}
+      return {...prev, [target.dataset.type]: target.value}
     })
   }
 

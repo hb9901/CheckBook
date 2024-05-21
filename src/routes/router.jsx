@@ -30,7 +30,10 @@ const Router = () => {
             />
           }
         />
-        <Route path="/:id" element={<PostDetailPage />} />
+        <Route
+          path="/:id"
+          element={<PostDetailPage monthExpenditures={monthExpenditures} />}
+        />
       </Routes>
     </BrowserRouter>
   );
