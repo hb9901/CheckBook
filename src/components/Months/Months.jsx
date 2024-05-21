@@ -17,12 +17,12 @@ const Month = styled.li`
   color: ${({ isSelected }) => (isSelected ? "white" : "black")};
 `;
 
-function Months({ setCurrentMonth }) {
+function Months({ setMonth }) {
   const [selectedMonth, setSelectedMonth] = useState(0);
 
   const handleClickMonth = ({ target }) => {
     setSelectedMonth(Number(target.id));
-    setCurrentMonth(target.value);
+    setMonth(Number(target.id));
   };
 
   return (
