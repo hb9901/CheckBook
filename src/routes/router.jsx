@@ -5,18 +5,24 @@ import PostDetailPage from "../pages/PostDetailPage";
 
 const Router = () => {
   const [expenditures, setExpenditures] = useState([]);
-  console.log(expenditures)
+  const [currentMonth, setCurrentMonth] = useState("1월");
 
   const addExpenditure = (expenditure) => {
     setExpenditures((prev) => [...prev, expenditure]);
   };
+
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path="/"
-          element={<HomePage addExpenditure={addExpenditure} />}
+          element={
+            <HomePage
+              addExpenditure={addExpenditure}
+              setCurrentMonth={setCurrentMonth}
+            />
+          }
         />
         <Route path="/:id" element={<PostDetailPage />} />
       </Routes>
