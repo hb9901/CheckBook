@@ -1,8 +1,11 @@
+import InputForm from "../../components/InputForm";
 
-function HomePage() {
+function HomePage({ addExpenditure }) {
   return (
-    <div>HomePage</div>
-  )
+    <div>
+      <InputForm addExpenditure={addExpenditure} />
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;
