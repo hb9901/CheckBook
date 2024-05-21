@@ -30,21 +30,21 @@ function InputForm({ addExpenditure }) {
       <FormWrapper>
         <InputWrapper>
           <label>날짜</label>
-          <input type="text" className="date" onChange={handleExpenditure} />
+          <input type="text" data-type="date" onChange={handleExpenditure} />
         </InputWrapper>
         <InputWrapper>
           <label>항목</label>
-          <input type="text" className="item" onChange={handleExpenditure} />
+          <input type="text" data-type="item" onChange={handleExpenditure} />
         </InputWrapper>
         <InputWrapper>
           <label>금액</label>
-          <input type="text" className="amount" onChange={handleExpenditure} />
+          <input type="text" data-type="amount" onChange={handleExpenditure} />
         </InputWrapper>
         <InputWrapper>
           <label>내용</label>
           <input
             type="text"
-            className="description"
+            data-type="description"
             onChange={handleExpenditure}
           />
         </InputWrapper>

@@ -17,6 +17,25 @@ const Router = () => {
     setExpenditures((prev) => [...prev, expenditure]);
   };
 
+  const updateExpenditure = (id, modifiedExpenditure) => {
+    setExpenditures((prev) => {
+      return prev.map((expenditure) => {
+        if (expenditure.id === id) {
+          return modifiedExpenditure;
+        } else {
+          return expenditure;
+        }
+      });
+    });
+  };
+
+  console.log(expenditures);
+  const deleteExpenditure = (id) => {
+    setExpenditures((prev) => {
+      prev.filter((expenditure) => expenditure.id !== id);
+    });
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -32,7 +51,13 @@ const Router = () => {
         />
         <Route
           path="/:id"
-          element={<PostDetailPage monthExpenditures={monthExpenditures} />}
+          element={
+            <PostDetailPage
+              monthExpenditures={monthExpenditures}
+              updateExpenditure={updateExpenditure}
+              deleteExpenditure={deleteExpenditure}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>

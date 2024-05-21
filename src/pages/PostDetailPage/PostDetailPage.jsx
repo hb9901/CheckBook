@@ -18,13 +18,16 @@ const DeleletButton = styled.button``;
 
 const GoBackButton = styled.button``;
 
-function PostDetailPage({ monthExpenditures }) {
+function PostDetailPage({ monthExpenditures , updateExpenditure, deleteExpenditure}) {
   const params = useParams();
   const expenditure = monthExpenditures.find(
     (expenditure) => expenditure.id === params.id
   );
   const [modifiedExpenditure, handleModifiedExpenditure] = useInput(expenditure);
 
+  const handleClickModify = () =>{
+    updateExpenditure(params.id, modifiedExpenditure);
+  }
   return (
     <PageWrapper>
       <InputWrapper>
@@ -64,8 +67,8 @@ function PostDetailPage({ monthExpenditures }) {
         />
       </InputWrapper>
       <ButtonWrapper>
-        <ModifyButton>수정</ModifyButton>
-        <DeleletButton >삭제</DeleletButton>
+        <ModifyButton onClick={handleClickModify}>수정</ModifyButton>
+        <DeleletButton>삭제</DeleletButton>
         <GoBackButton>뒤로 가기</GoBackButton>
       </ButtonWrapper>
     </PageWrapper>
