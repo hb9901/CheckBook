@@ -6,7 +6,7 @@ import { initExpenditures } from "./constants";
 
 const Router = () => {
   const [expenditures, setExpenditures] = useState(initExpenditures);
-  const [month, setMonth] = useState(0);
+  const [month, setMonth] = useState(Number(localStorage.getItem("month")));
 
   const monthExpenditures = expenditures.filter((expenditure) => {
     const date = new Date(expenditure.date);

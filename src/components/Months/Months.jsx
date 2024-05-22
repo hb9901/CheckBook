@@ -3,11 +3,15 @@ import styled from "styled-components";
 import { months } from "./costants";
 
 function Months({ setMonth }) {
-  const [selectedMonth, setSelectedMonth] = useState(0);
+  const [selectedMonth, setSelectedMonth] = useState(
+    Number(localStorage.getItem("month"))
+  );
 
   const handleClickMonth = ({ target }) => {
-    setSelectedMonth(Number(target.id));
-    setMonth(Number(target.id));
+    const month = Number(target.id);
+    setSelectedMonth(month);
+    setMonth(month);
+    localStorage.setItem("month", JSON.stringify(month));
   };
 
   return (
