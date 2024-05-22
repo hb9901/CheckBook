@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import useInput from "../../hooks/useInput";
 
@@ -18,8 +18,13 @@ const DeleletButton = styled.button``;
 
 const GoBackButton = styled.button``;
 
-function Expenditure({monthExpenditures, updateExpenditure, deleteExpenditure}) {
+function Expenditure({
+  monthExpenditures,
+  updateExpenditure,
+  deleteExpenditure,
+}) {
   const params = useParams();
+  const navigate = useNavigate();
   const expenditure = monthExpenditures.find(
     (expenditure) => expenditure.id === params.id
   );
@@ -28,6 +33,15 @@ function Expenditure({monthExpenditures, updateExpenditure, deleteExpenditure}) 
 
   const handleClickModify = () => {
     updateExpenditure(params.id, modifiedExpenditure);
+  };
+
+  const handleClickDelete = () => {
+    deleteExpenditure(params.id);
+    navigate("/");
+  };
+
+  const handleClickGoBack = () => {
+    navigate("/");
   };
   return (
     <Wrapper>
@@ -73,8 +87,8 @@ function Expenditure({monthExpenditures, updateExpenditure, deleteExpenditure}) 
       <br />
       <ButtonWrapper>
         <ModifyButton onClick={handleClickModify}>수정</ModifyButton>
-        <DeleletButton>삭제</DeleletButton>
-        <GoBackButton>뒤로 가기</GoBackButton>
+        <DeleletButton onClick={handleClickDelete}>삭제</DeleletButton>
+        <GoBackButton onClick={handleClickGoBack}>뒤로 가기</GoBackButton>
       </ButtonWrapper>
     </Wrapper>
   );

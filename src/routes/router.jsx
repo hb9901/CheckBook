@@ -32,7 +32,7 @@ const Router = () => {
   console.log(expenditures);
   const deleteExpenditure = (id) => {
     setExpenditures((prev) => {
-      prev.filter((expenditure) => expenditure.id !== id);
+      return prev.filter((expenditure) => expenditure.id !== id);
     });
   };
 
