@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
 
 function Expenditures() {
-  const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
+  const { expenditures, month } = useSelector((state) => state.expenditure);
+  const monthExpenditures = expenditures.filter((expenditure) => {
+    const expenditureMonth = expenditure.date[6] - 1
+    return expenditureMonth === month;
+  });
 
   return (
     <ExpendituresList>

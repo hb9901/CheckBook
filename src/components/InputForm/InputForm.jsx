@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import isInputValidate from "../../assets/js/isInputValidate";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
+import { addExpenditure } from "../../redux/slices/expenditures.slice";
 import { initExpenditure } from "./constants";
 
 function InputForm() {
   const [expenditure, setExpenditure] = useState(initExpenditure);
-  const addExpenditure = useContext(ExpenditureContext).addExpenditure;
-
+  const dispatch = useDispatch();
+  
   const handleChangeInput = ({ target }) => {
     setExpenditure((prev) => {
       return { ...prev, [target.dataset.type]: target.value };
@@ -18,7 +19,7 @@ function InputForm() {
     e.preventDefault();
 
     if (!isInputValidate(expenditure)) return;
-    addExpenditure(expenditure);
+    dispatch(addExpenditure(expenditure));
     setExpenditure(initExpenditure);
   };
 

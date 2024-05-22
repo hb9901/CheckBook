@@ -1,20 +1,23 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import isInputValidate from "../../assets/js/isInputValidate";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
+import { deleteExpenditure, updateExpenditure } from "../../redux/slices/expenditures.slice";
 
 function Expenditure() {
-  const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
-  const updateExpenditure = useContext(ExpenditureContext).updateExpenditure;
-  const deleteExpenditure = useContext(ExpenditureContext).deleteExpenditure;
-  const setMonth = useContext(ExpenditureContext).setMonth;
   const params = useParams();
   const navigate = useNavigate();
   const dateRef = useRef("");
   const itemRef = useRef("");
   const amountRef = useRef("");
   const descriptionRef = useRef("");
+  const dispatch = useDispatch();
+  const { expenditures, month } = useSelector((state) => state.expenditure);
+  const monthExpenditures = expenditures.filter((expenditure) => {
+    const expenditureMonth = expenditure.date[6] - 1;
+    return expenditureMonth === month;
+  });
 
   const expenditure = monthExpenditures.find(
     (expenditure) => expenditure.id === params.id
@@ -30,19 +33,17 @@ function Expenditure() {
     };
 
     if (!isInputValidate(modifiedExpenditure)) return;
-    updateExpenditure(params.id, modifiedExpenditure);
-    setMonth(0);
+    dispatch(updateExpenditure(modifiedExpenditure));
+
     navigate("/");
   };
 
   const handleClickDelete = () => {
-    deleteExpenditure(params.id);
-    setMonth(0);
+    dispatch(deleteExpenditure(params.id));
     navigate("/");
   };
 
   const handleClickGoBack = () => {
-    setMonth(0);
     navigate("/");
   };
 

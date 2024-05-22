@@ -1,16 +1,17 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
+import { setMonth } from "../../redux/slices/expenditures.slice";
 import { months } from "./costants";
 
 function Months() {
   const [selectedMonth, setSelectedMonth] = useState(Number(localStorage.getItem('month')));
-  const setMonth = useContext(ExpenditureContext).setMonth;
+  const dispatch = useDispatch();
   
   const handleClickMonth = ({ target }) => {
     const month = Number(target.id);
     setSelectedMonth(month);
-    setMonth(month);
+    dispatch(setMonth(month));
     localStorage.setItem("month", month);
   };
 
