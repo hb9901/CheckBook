@@ -8,7 +8,6 @@ function Expenditure() {
   const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
   const updateExpenditure = useContext(ExpenditureContext).updateExpenditure;
   const deleteExpenditure = useContext(ExpenditureContext).deleteExpenditure;
-  const setMonth = useContext(ExpenditureContext).setMonth;
   const params = useParams();
   const navigate = useNavigate();
   const dateRef = useRef("");
@@ -30,19 +29,16 @@ function Expenditure() {
     };
 
     if (!isInputValidate(modifiedExpenditure)) return;
-    updateExpenditure(params.id, modifiedExpenditure);
-    setMonth(0);
+    updateExpenditure(modifiedExpenditure);
     navigate("/");
   };
 
   const handleClickDelete = () => {
     deleteExpenditure(params.id);
-    setMonth(0);
     navigate("/");
   };
 
   const handleClickGoBack = () => {
-    setMonth(0);
     navigate("/");
   };
 

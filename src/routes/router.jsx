@@ -7,7 +7,7 @@ import { initExpenditures } from "./constants";
 
 const Router = () => {
   const [expenditures, setExpenditures] = useState(initExpenditures);
-  const [month, setMonth] = useState(Number(localStorage.getItem('month')));
+  const [month, setMonth] = useState(Number(localStorage.getItem("month")));
 
   const monthExpenditures = expenditures.filter((expenditure) => {
     const date = new Date(expenditure.date);
@@ -18,10 +18,10 @@ const Router = () => {
     setExpenditures((prev) => [...prev, expenditure]);
   };
 
-  const updateExpenditure = (id, modifiedExpenditure) => {
+  const updateExpenditure = (modifiedExpenditure) => {
     setExpenditures((prev) => {
       return prev.map((expenditure) => {
-        if (expenditure.id === id) {
+        if (expenditure.id === modifiedExpenditure.id) {
           return modifiedExpenditure;
         } else {
           return expenditure;
@@ -48,26 +48,8 @@ const Router = () => {
     >
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                addExpenditure={addExpenditure}
-                setMonth={setMonth}
-                monthExpenditures={monthExpenditures}
-              />
-            }
-          />
-          <Route
-            path="/:id"
-            element={
-              <PostDetailPage
-                monthExpenditures={monthExpenditures}
-                updateExpenditure={updateExpenditure}
-                deleteExpenditure={deleteExpenditure}
-              />
-            }
-          />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/:id" element={<PostDetailPage />} />
         </Routes>
       </BrowserRouter>
     </ExpenditureContext.Provider>
