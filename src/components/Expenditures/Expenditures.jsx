@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ExpendituresList = styled.ul`
@@ -22,15 +23,17 @@ function Expenditures({ monthExpenditures }) {
     <ExpendituresList>
       {monthExpenditures.map((expenditure) => {
         return (
-          <Expenditure key={expenditure.id}>
-            <ListLeft>
-              <Date>{expenditure.date}</Date>
-              <Item>{expenditure.item}</Item>
-            </ListLeft>
-            <ListRight>
-              <Amount>{expenditure.amount} 원</Amount>
-            </ListRight>
-          </Expenditure>
+          <Link key={expenditure.id}  to={`/${expenditure.id}`}>
+            <Expenditure>
+              <ListLeft>
+                <Date>{expenditure.date}</Date>
+                <Item>{expenditure.item}</Item>
+              </ListLeft>
+              <ListRight>
+                <Amount>{expenditure.amount} 원</Amount>
+              </ListRight>
+            </Expenditure>
+          </Link>
         );
       })}
     </ExpendituresList>
