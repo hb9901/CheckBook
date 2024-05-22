@@ -2,21 +2,96 @@ import { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin: 0px auto;
 
-const InputWrapper = styled.div``;
+  padding: 20px;
+  max-width: 800px;
+  border-radius: 16px;
 
-const Label = styled.div``;
+  background-color: rgb(255, 255, 255);
+`;
 
-const Input = styled.input``;
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 
-const ButtonWrapper = styled.div``;
+  margin-bottom: 10px;
+`;
 
-const ModifyButton = styled.button``;
+const Label = styled.div`
+  margin-bottom: 5px;
 
-const DeleletButton = styled.button``;
+  font-size: 14px;
+  text-align: left;
 
-const GoBackButton = styled.button``;
+  color: rgb(51, 51, 51);
+`;
+
+const Input = styled.input`
+  padding: 10px;
+
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 4px;
+
+  font-size: 14px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const ModifyButton = styled.button`
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: rgb(0, 123, 255);
+  color: white;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+    background-color: rgb(0, 38, 255);
+  }
+`;
+
+const DeleletButton = styled.button`
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: rgb(255, 77, 77);
+  color: white;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+    background-color: rgb(175, 36, 36);
+  }
+`;
+
+const GoBackButton = styled.button`
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: rgb(108, 117, 125);
+  color: white;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+    background-color: rgb(55, 61, 66);
+  }
+`;
 
 function Expenditure({
   monthExpenditures,

@@ -29,7 +29,6 @@ const Router = () => {
     });
   };
 
-  console.log(expenditures);
   const deleteExpenditure = (id) => {
     setExpenditures((prev) => {
       return prev.filter((expenditure) => expenditure.id !== id);
