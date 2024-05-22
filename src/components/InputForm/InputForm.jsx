@@ -15,7 +15,7 @@ function InputForm({ addExpenditure }) {
   const handleClickAdd = (e) => {
     e.preventDefault();
 
-    if(!isInputValidate(expenditure)) return;
+    if (!isInputValidate(expenditure)) return;
     addExpenditure(expenditure);
     setExpenditure(initExpenditure);
   };

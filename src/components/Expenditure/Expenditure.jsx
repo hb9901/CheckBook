@@ -28,7 +28,7 @@ function Expenditure({
       description: descriptionRef.current.value,
     };
 
-    if(!isInputValidate(modifiedExpenditure)) return;
+    if (!isInputValidate(modifiedExpenditure)) return;
     updateExpenditure(params.id, modifiedExpenditure);
     navigate("/");
   };
@@ -68,7 +68,7 @@ function Expenditure({
         <Label>금액</Label>
         <Input
           ref={amountRef}
-          type="text"
+          type="number"
           defaultValue={expenditure.amount}
           data-type="amount"
           placeholder="지출 금액"
