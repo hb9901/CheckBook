@@ -1,14 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { initExpenditure } from "./constants";
+import {
+  isAmountInputValidate,
+  isDateInputValidate,
+  isInputValidate,
+} from "./functions";
 
 function InputForm({ addExpenditure }) {
-  const [expenditure, setExpenditure] = useState({
-    id: crypto.randomUUID(),
-    date: "2024-01-01",
-    item: "",
-    amount: "",
-    description: "",
-  });
+  const [expenditure, setExpenditure] = useState(initExpenditure);
 
   const handleChangeInput = ({ target }) => {
     setExpenditure((prev) => {
@@ -18,21 +18,30 @@ function InputForm({ addExpenditure }) {
 
   const handleClickAdd = (e) => {
     e.preventDefault();
-    addExpenditure(expenditure);
-    setExpenditure({
-      id: crypto.randomUUID(),
-      date: "2024-01-01",
-      item: "",
-      amount: "",
-      description: "",
-    });
+
+    if (!isDateInputValidate(expenditure.date)) {
+      alert("날짜 형식을 YYYY-MM-DD로 입력해주세요!");
+      return;
+    } else if (!isInputValidate(expenditure.item)) {
+      alert("지출 항목을 적어주세요!");
+      return;
+    } else if (!isAmountInputValidate(expenditure.amount)) {
+      alert("유효한 금액이 아닙니다!");
+      return;
+    } else if (!isInputValidate(expenditure.description)) {
+      alert("지출 내용을 적어주세요!");
+      return;
+    } else {
+      addExpenditure(expenditure);
+      setExpenditure(initExpenditure);
+    }
   };
 
   return (
     <form onSubmit={handleClickAdd}>
       <FormWrapper>
         <InputWrapper>
-          <Label for="date">날짜</Label>
+          <Label>날짜</Label>
           <Input
             type="text"
             id="date"
@@ -43,7 +52,7 @@ function InputForm({ addExpenditure }) {
           />
         </InputWrapper>
         <InputWrapper>
-          <Label for="item">항목</Label>
+          <Label>항목</Label>
           <Input
             type="text"
             id="item"
@@ -54,7 +63,7 @@ function InputForm({ addExpenditure }) {
           />
         </InputWrapper>
         <InputWrapper>
-          <Label for="amount">금액</Label>
+          <Label>금액</Label>
           <Input
             type="number"
             id="amount"
@@ -65,7 +74,7 @@ function InputForm({ addExpenditure }) {
           />
         </InputWrapper>
         <InputWrapper>
-          <Label for="description">내용</Label>
+          <Label>내용</Label>
           <Input
             type="text"
             id="description"
