@@ -2,19 +2,48 @@ import { useState } from "react";
 import styled from "styled-components";
 import { months } from "./costants";
 
+const SectionWrapper = styled.section`
+  background-color: rgb(255, 255, 255);
+  border-radius: 16px;
+  padding: 20px;
+
+`;
+
 const MonthList = styled.ol`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 
   list-style: none;
-
-  cursor: pointer;
 `;
 
 const Month = styled.li`
-  background-color: ${({ isSelected }) => (isSelected ? "blue" : "grey")};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 60px;
+  width: 104px;
+
+  border-radius: 10px;
+  border: none;
+
+  text-align: center;
+  font-family: Pretendard, serif;
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+  background-color: ${({ isSelected }) => (isSelected ? "#2EC4B6" : "#F6F7FA")};
   color: ${({ isSelected }) => (isSelected ? "white" : "black")};
+
+  &:hover {
+    background-color: #2ec4b6;
+    color: white;
+  }
 `;
 
 function Months({ setMonth }) {
@@ -26,21 +55,23 @@ function Months({ setMonth }) {
   };
 
   return (
-    <MonthList>
-      {months.map((month, index) => {
-        return (
-          <Month
-            key={month}
-            id={index}
-            onClick={handleClickMonth}
-            value={month}
-            isSelected={index === selectedMonth}
-          >
-            {month}
-          </Month>
-        );
-      })}
-    </MonthList>
+    <SectionWrapper>
+      <MonthList>
+        {months.map((month, index) => {
+          return (
+            <Month
+              key={month}
+              id={index}
+              onClick={handleClickMonth}
+              value={month}
+              isSelected={index === selectedMonth}
+            >
+              {month}
+            </Month>
+          );
+        })}
+      </MonthList>
+    </SectionWrapper>
   );
 }
 
