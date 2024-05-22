@@ -1,11 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import isInputValidate from "../../assets/js/isInputValidate";
 import { initExpenditure } from "./constants";
-import {
-  isAmountInputValidate,
-  isDateInputValidate,
-  isInputValidate,
-} from "./functions";
 
 function InputForm({ addExpenditure }) {
   const [expenditure, setExpenditure] = useState(initExpenditure);
@@ -19,22 +15,9 @@ function InputForm({ addExpenditure }) {
   const handleClickAdd = (e) => {
     e.preventDefault();
 
-    if (!isDateInputValidate(expenditure.date)) {
-      alert("날짜 형식을 YYYY-MM-DD로 입력해주세요!");
-      return;
-    } else if (!isInputValidate(expenditure.item)) {
-      alert("지출 항목을 적어주세요!");
-      return;
-    } else if (!isAmountInputValidate(expenditure.amount)) {
-      alert("유효한 금액이 아닙니다!");
-      return;
-    } else if (!isInputValidate(expenditure.description)) {
-      alert("지출 내용을 적어주세요!");
-      return;
-    } else {
-      addExpenditure(expenditure);
-      setExpenditure(initExpenditure);
-    }
+    if(!isInputValidate(expenditure)) return;
+    addExpenditure(expenditure);
+    setExpenditure(initExpenditure);
   };
 
   return (

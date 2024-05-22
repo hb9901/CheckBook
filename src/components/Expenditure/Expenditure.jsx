@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import isInputValidate from "../../assets/js/isInputValidate";
 
 function Expenditure({
   monthExpenditures,
@@ -26,6 +27,8 @@ function Expenditure({
       amount: amountRef.current.value,
       description: descriptionRef.current.value,
     };
+
+    if(!isInputValidate(modifiedExpenditure)) return;
     updateExpenditure(params.id, modifiedExpenditure);
     navigate("/");
   };
@@ -92,7 +95,6 @@ function Expenditure({
 }
 
 export default Expenditure;
-
 
 const Wrapper = styled.div`
   margin: 0px auto;
