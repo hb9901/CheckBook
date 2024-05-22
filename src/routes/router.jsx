@@ -17,10 +17,10 @@ const Router = () => {
     setExpenditures((prev) => [...prev, expenditure]);
   };
 
-  const updateExpenditure = (id, modifiedExpenditure) => {
+  const updateExpenditure = (modifiedExpenditure) => {
     setExpenditures((prev) => {
       return prev.map((expenditure) => {
-        if (expenditure.id === id) {
+        if (expenditure.id === modifiedExpenditure.id) {
           return modifiedExpenditure;
         } else {
           return expenditure;
