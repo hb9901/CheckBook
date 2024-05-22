@@ -2,32 +2,84 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ExpendituresList = styled.ul`
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
   list-style: none;
+
+  padding: 0;
+  margin: 0;
 `;
 
 const Expenditure = styled.li`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 20px;
+  border-radius: 8px;
+
+  background-color: rgb(249, 249, 249);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+
+  cursor: pointer;
 `;
 
-const ListLeft = styled.div``;
-const ListRight = styled.div``;
+const ListLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 
-const Date = styled.div``;
-const Item = styled.div``;
-const Amount = styled.div``;
+  flex: 1 1 auto;
+
+  white-space: nowrap;
+  overflow: hidden;
+`;
+const ListRight = styled.div`
+  flex: 0 0 auto;
+`;
+
+const Date = styled.div`
+  margin-bottom: 5px;
+
+  font-size: 14px;
+
+  color: rgb(102, 102, 102);
+`;
+const Item = styled.div`
+  max-width: 100%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-weight: bold;
+
+  color: rgb(0, 123, 255);
+`;
+const Amount = styled.div`
+  font-weight: bold;
+  color: rgb(0, 123, 255);
+`;
 
 function Expenditures({ monthExpenditures }) {
   return (
     <ExpendituresList>
       {monthExpenditures.map((expenditure) => {
         return (
-          <Link key={expenditure.id} to={`/${expenditure.id}`}>
+          <Link
+            key={expenditure.id}
+            to={`/${expenditure.id}`}
+            style={{ textDecorationLine: "none" }}
+          >
             <Expenditure>
               <ListLeft>
                 <Date>{expenditure.date}</Date>
-                <Item>{expenditure.item}</Item>
+                <Item>
+                  {expenditure.item} - {expenditure.description}
+                </Item>
               </ListLeft>
               <ListRight>
                 <Amount>{expenditure.amount} 원</Amount>
