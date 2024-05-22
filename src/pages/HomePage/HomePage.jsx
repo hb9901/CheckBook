@@ -3,7 +3,7 @@ import Expenditures from "../../components/Expenditures";
 import InputForm from "../../components/InputForm";
 import Months from "../../components/Months";
 
-const PageWrapper = styled.div`
+const MainWrapper = styled.main`
   max-width: 800px;
   width: 100%;
 
@@ -16,11 +16,11 @@ const PageWrapper = styled.div`
 
 function HomePage({ addExpenditure, setMonth, monthExpenditures }) {
   return (
-    <PageWrapper>
+    <MainWrapper>
       <InputForm addExpenditure={addExpenditure} />
       <Months setMonth={setMonth} />
       <Expenditures monthExpenditures={monthExpenditures} />
-    </PageWrapper>
+    </MainWrapper>
   );
 }
 
