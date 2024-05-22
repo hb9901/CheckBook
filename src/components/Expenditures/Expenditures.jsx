@@ -1,6 +1,38 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+
+
+function Expenditures({ monthExpenditures }) {
+  return (
+    <ExpendituresList>
+      {monthExpenditures.map((expenditure) => {
+        return (
+          <Link
+            key={expenditure.id}
+            to={`/${expenditure.id}`}
+            style={{ textDecorationLine: "none" }}
+          >
+            <Expenditure>
+              <ListLeft>
+                <Date>{expenditure.date}</Date>
+                <Item>
+                  {expenditure.item} - {expenditure.description}
+                </Item>
+              </ListLeft>
+              <ListRight>
+                <Amount>{expenditure.amount} 원</Amount>
+              </ListRight>
+            </Expenditure>
+          </Link>
+        );
+      })}
+    </ExpendituresList>
+  );
+}
+
+export default Expenditures;
+
 const ExpendituresList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -63,33 +95,3 @@ const Amount = styled.div`
   font-weight: bold;
   color: rgb(0, 123, 255);
 `;
-
-function Expenditures({ monthExpenditures }) {
-  return (
-    <ExpendituresList>
-      {monthExpenditures.map((expenditure) => {
-        return (
-          <Link
-            key={expenditure.id}
-            to={`/${expenditure.id}`}
-            style={{ textDecorationLine: "none" }}
-          >
-            <Expenditure>
-              <ListLeft>
-                <Date>{expenditure.date}</Date>
-                <Item>
-                  {expenditure.item} - {expenditure.description}
-                </Item>
-              </ListLeft>
-              <ListRight>
-                <Amount>{expenditure.amount} 원</Amount>
-              </ListRight>
-            </Expenditure>
-          </Link>
-        );
-      })}
-    </ExpendituresList>
-  );
-}
-
-export default Expenditures;

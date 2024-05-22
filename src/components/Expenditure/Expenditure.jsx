@@ -2,97 +2,6 @@ import { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  margin: 0px auto;
-
-  padding: 20px;
-  max-width: 800px;
-  border-radius: 16px;
-
-  background-color: rgb(255, 255, 255);
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  margin-bottom: 10px;
-`;
-
-const Label = styled.div`
-  margin-bottom: 5px;
-
-  font-size: 14px;
-  text-align: left;
-
-  color: rgb(51, 51, 51);
-`;
-
-const Input = styled.input`
-  padding: 10px;
-
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 4px;
-
-  font-size: 14px;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const ModifyButton = styled.button`
-  padding: 10px 20px;
-
-  border: none;
-  border-radius: 4px;
-
-  background-color: rgb(0, 123, 255);
-  color: white;
-
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out 0s;
-
-  &:hover {
-    background-color: rgb(0, 38, 255);
-  }
-`;
-
-const DeleletButton = styled.button`
-  padding: 10px 20px;
-
-  border: none;
-  border-radius: 4px;
-
-  background-color: rgb(255, 77, 77);
-  color: white;
-
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out 0s;
-
-  &:hover {
-    background-color: rgb(175, 36, 36);
-  }
-`;
-
-const GoBackButton = styled.button`
-  padding: 10px 20px;
-
-  border: none;
-  border-radius: 4px;
-
-  background-color: rgb(108, 117, 125);
-  color: white;
-
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out 0s;
-
-  &:hover {
-    background-color: rgb(55, 61, 66);
-  }
-`;
-
 function Expenditure({
   monthExpenditures,
   updateExpenditure,
@@ -183,3 +92,95 @@ function Expenditure({
 }
 
 export default Expenditure;
+
+
+const Wrapper = styled.div`
+  margin: 0px auto;
+
+  padding: 20px;
+  max-width: 800px;
+  border-radius: 16px;
+
+  background-color: rgb(255, 255, 255);
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+`;
+
+const Label = styled.div`
+  margin-bottom: 5px;
+
+  font-size: 14px;
+  text-align: left;
+
+  color: rgb(51, 51, 51);
+`;
+
+const Input = styled.input`
+  padding: 10px;
+
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 4px;
+
+  font-size: 14px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const ModifyButton = styled.button`
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: rgb(0, 123, 255);
+  color: white;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+    background-color: rgb(0, 38, 255);
+  }
+`;
+
+const DeleletButton = styled.button`
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: rgb(255, 77, 77);
+  color: white;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+    background-color: rgb(175, 36, 36);
+  }
+`;
+
+const GoBackButton = styled.button`
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: rgb(108, 117, 125);
+  color: white;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+    background-color: rgb(55, 61, 66);
+  }
+`;

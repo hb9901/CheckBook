@@ -2,6 +2,35 @@ import { useState } from "react";
 import styled from "styled-components";
 import { months } from "./costants";
 
+function Months({ setMonth }) {
+  const [selectedMonth, setSelectedMonth] = useState(0);
+
+  const handleClickMonth = ({ target }) => {
+    setSelectedMonth(Number(target.id));
+    setMonth(Number(target.id));
+  };
+
+  return (
+    <MonthList>
+      {months.map((month, index) => {
+        return (
+          <Month
+            key={month}
+            id={index}
+            onClick={handleClickMonth}
+            value={month}
+            isSelected={index === selectedMonth}
+          >
+            {month}
+          </Month>
+        );
+      })}
+    </MonthList>
+  );
+}
+
+export default Months;
+
 const MonthList = styled.ol`
   display: flex;
   flex-wrap: wrap;
@@ -38,32 +67,3 @@ const Month = styled.li`
     color: white;
   }
 `;
-
-function Months({ setMonth }) {
-  const [selectedMonth, setSelectedMonth] = useState(0);
-
-  const handleClickMonth = ({ target }) => {
-    setSelectedMonth(Number(target.id));
-    setMonth(Number(target.id));
-  };
-
-  return (
-    <MonthList>
-      {months.map((month, index) => {
-        return (
-          <Month
-            key={month}
-            id={index}
-            onClick={handleClickMonth}
-            value={month}
-            isSelected={index === selectedMonth}
-          >
-            {month}
-          </Month>
-        );
-      })}
-    </MonthList>
-  );
-}
-
-export default Months;
