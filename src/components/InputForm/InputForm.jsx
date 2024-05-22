@@ -34,7 +34,7 @@ function InputForm({ addExpenditure }) {
         </InputWrapper>
         <InputWrapper>
           <label>항목</label>
-          <input type="text" data-type="item" onChange={handleExpenditure} />
+          <input type="text" data-type="item" placeholder="지출 항목" onChange={handleExpenditure} />
         </InputWrapper>
         <InputWrapper>
           <label>금액</label>

@@ -45,7 +45,8 @@ function Expenditure({monthExpenditures, updateExpenditure, deleteExpenditure}) 
         <Input
           type="text"
           value={modifiedExpenditure.item}
-          data-type="date"
+          data-type="item"
+          placeholder="지출 항목"
           onChange={handleModifiedExpenditure}
         />
       </InputWrapper>
@@ -55,6 +56,7 @@ function Expenditure({monthExpenditures, updateExpenditure, deleteExpenditure}) 
           type="text"
           value={modifiedExpenditure.amount}
           data-type="amount"
+          placeholder="지출 금액"
           onChange={handleModifiedExpenditure}
         />
       </InputWrapper>
@@ -64,9 +66,11 @@ function Expenditure({monthExpenditures, updateExpenditure, deleteExpenditure}) 
           type="text"
           value={modifiedExpenditure.description}
           data-type="description"
+          placeholder="지출 내용"
           onChange={handleModifiedExpenditure}
         />
       </InputWrapper>
+      <br />
       <ButtonWrapper>
         <ModifyButton onClick={handleClickModify}>수정</ModifyButton>
         <DeleletButton>삭제</DeleletButton>
