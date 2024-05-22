@@ -2,13 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { months } from "./costants";
 
-const SectionWrapper = styled.section`
-  background-color: rgb(255, 255, 255);
-  border-radius: 16px;
-  padding: 20px;
-
-`;
-
 const MonthList = styled.ol`
   display: flex;
   flex-wrap: wrap;
@@ -55,23 +48,21 @@ function Months({ setMonth }) {
   };
 
   return (
-    <SectionWrapper>
-      <MonthList>
-        {months.map((month, index) => {
-          return (
-            <Month
-              key={month}
-              id={index}
-              onClick={handleClickMonth}
-              value={month}
-              isSelected={index === selectedMonth}
-            >
-              {month}
-            </Month>
-          );
-        })}
-      </MonthList>
-    </SectionWrapper>
+    <MonthList>
+      {months.map((month, index) => {
+        return (
+          <Month
+            key={month}
+            id={index}
+            onClick={handleClickMonth}
+            value={month}
+            isSelected={index === selectedMonth}
+          >
+            {month}
+          </Month>
+        );
+      })}
+    </MonthList>
   );
 }
 

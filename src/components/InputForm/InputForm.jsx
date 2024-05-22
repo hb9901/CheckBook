@@ -1,12 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const SectionWrapper = styled.section`
-  background-color: rgb(255, 255, 255);
-  border-radius: 16px;
-  padding: 20px;
-`;
-
 const FormWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -84,57 +78,55 @@ function InputForm({ addExpenditure }) {
   };
 
   return (
-    <SectionWrapper>
-      <form onSubmit={handleClickAdd}>
-        <FormWrapper>
-          <InputWrapper>
-            <Label for="date">날짜</Label>
-            <Input
-              type="text"
-              id="date"
-              data-type="date"
-              placeholder="YYYY-MM-DD"
-              value={expenditure.date}
-              onChange={handleChangeInput}
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <Label for="item">항목</Label>
-            <Input
-              type="text"
-              id="item"
-              data-type="item"
-              placeholder="지출 항목"
-              value={expenditure.item}
-              onChange={handleChangeInput}
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <Label for="amount">금액</Label>
-            <Input
-              type="number"
-              id="amount"
-              data-type="amount"
-              placeholder="지출 금액"
-              value={expenditure.amount}
-              onChange={handleChangeInput}
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <Label for="description">내용</Label>
-            <Input
-              type="text"
-              id="description"
-              data-type="description"
-              placeholder="지출 내용"
-              value={expenditure.description}
-              onChange={handleChangeInput}
-            />
-          </InputWrapper>
-          <Button>저장</Button>
-        </FormWrapper>
-      </form>
-    </SectionWrapper>
+    <form onSubmit={handleClickAdd}>
+      <FormWrapper>
+        <InputWrapper>
+          <Label for="date">날짜</Label>
+          <Input
+            type="text"
+            id="date"
+            data-type="date"
+            placeholder="YYYY-MM-DD"
+            value={expenditure.date}
+            onChange={handleChangeInput}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Label for="item">항목</Label>
+          <Input
+            type="text"
+            id="item"
+            data-type="item"
+            placeholder="지출 항목"
+            value={expenditure.item}
+            onChange={handleChangeInput}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Label for="amount">금액</Label>
+          <Input
+            type="number"
+            id="amount"
+            data-type="amount"
+            placeholder="지출 금액"
+            value={expenditure.amount}
+            onChange={handleChangeInput}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Label for="description">내용</Label>
+          <Input
+            type="text"
+            id="description"
+            data-type="description"
+            placeholder="지출 내용"
+            value={expenditure.description}
+            onChange={handleChangeInput}
+          />
+        </InputWrapper>
+        <Button>저장</Button>
+      </FormWrapper>
+    </form>
   );
 }
 

@@ -23,7 +23,7 @@ function Expenditures({ monthExpenditures }) {
     <ExpendituresList>
       {monthExpenditures.map((expenditure) => {
         return (
-          <Link key={expenditure.id}  to={`/${expenditure.id}`}>
+          <Link key={expenditure.id} to={`/${expenditure.id}`}>
             <Expenditure>
               <ListLeft>
                 <Date>{expenditure.date}</Date>

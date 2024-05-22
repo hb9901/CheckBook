@@ -9,17 +9,29 @@ const MainWrapper = styled.main`
 
   display: flex;
   flex-direction: column;
-  
+
   gap: 20px;
   margin: 0px auto;
+`;
+
+const SectionWrapper = styled.section`
+  background-color: rgb(255, 255, 255);
+  border-radius: 16px;
+  padding: 20px;
 `;
 
 function HomePage({ addExpenditure, setMonth, monthExpenditures }) {
   return (
     <MainWrapper>
-      <InputForm addExpenditure={addExpenditure} />
-      <Months setMonth={setMonth} />
-      <Expenditures monthExpenditures={monthExpenditures} />
+      <SectionWrapper>
+        <InputForm addExpenditure={addExpenditure} />
+      </SectionWrapper>
+      <SectionWrapper>
+        <Months setMonth={setMonth} />
+      </SectionWrapper>
+      <SectionWrapper>
+        <Expenditures monthExpenditures={monthExpenditures} />
+      </SectionWrapper>
     </MainWrapper>
   );
 }
