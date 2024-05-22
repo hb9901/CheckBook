@@ -1,6 +1,6 @@
+import { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import useInput from "../../hooks/useInput";
 
 const Wrapper = styled.div``;
 
@@ -25,14 +25,25 @@ function Expenditure({
 }) {
   const params = useParams();
   const navigate = useNavigate();
+  const dateRef = useRef("");
+  const itemRef = useRef("");
+  const amountRef = useRef("");
+  const descriptionRef = useRef("");
+
   const expenditure = monthExpenditures.find(
     (expenditure) => expenditure.id === params.id
   );
-  const [modifiedExpenditure, handleModifiedExpenditure] =
-    useInput(expenditure);
 
   const handleClickModify = () => {
+    const modifiedExpenditure = {
+      ...expenditure,
+      date: dateRef.current.value,
+      item: itemRef.current.value,
+      amount: amountRef.current.value,
+      description: descriptionRef.current.value,
+    };
     updateExpenditure(params.id, modifiedExpenditure);
+    navigate("/");
   };
 
   const handleClickDelete = () => {
@@ -43,45 +54,47 @@ function Expenditure({
   const handleClickGoBack = () => {
     navigate("/");
   };
+  
   return (
     <Wrapper>
       <InputWrapper>
         <Label>날짜</Label>
         <Input
+          ref={dateRef}
           type="text"
-          value={modifiedExpenditure.date}
+          dateRef
+          defaultValue={expenditure.date}
           data-type="date"
-          onChange={handleModifiedExpenditure}
         />
       </InputWrapper>
       <InputWrapper>
         <Label>항목</Label>
         <Input
+          ref={itemRef}
           type="text"
-          value={modifiedExpenditure.item}
+          defaultValue={expenditure.item}
           data-type="item"
           placeholder="지출 항목"
-          onChange={handleModifiedExpenditure}
         />
       </InputWrapper>
       <InputWrapper>
         <Label>금액</Label>
         <Input
+          ref={amountRef}
           type="text"
-          value={modifiedExpenditure.amount}
+          defaultValue={expenditure.amount}
           data-type="amount"
           placeholder="지출 금액"
-          onChange={handleModifiedExpenditure}
         />
       </InputWrapper>
       <InputWrapper>
         <Label>내용</Label>
         <Input
+          ref={descriptionRef}
           type="text"
-          value={modifiedExpenditure.description}
+          defaultValue={expenditure.description}
           data-type="description"
           placeholder="지출 내용"
-          onChange={handleModifiedExpenditure}
         />
       </InputWrapper>
       <br />

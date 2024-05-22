@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useInput from "../../hooks/useInput";
+import useStateInput from "../../hooks/useStateInput";
 
 const FormWrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const InputWrapper = styled.div`
 `;
 
 function InputForm({ addExpenditure }) {
-  const [expenditure, handleExpenditure] = useInput({
+  const [expenditure, handleExpenditure] = useStateInput({
     id: crypto.randomUUID(),
     date: "",
     item: "",
