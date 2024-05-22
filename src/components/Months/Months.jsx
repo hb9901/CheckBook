@@ -4,12 +4,14 @@ import { ExpenditureContext } from "../../context/ExpenditureContext";
 import { months } from "./costants";
 
 function Months() {
-  const [selectedMonth, setSelectedMonth] = useState(0);
+  const [selectedMonth, setSelectedMonth] = useState(Number(localStorage.getItem('month')));
   const setMonth = useContext(ExpenditureContext).setMonth;
   
   const handleClickMonth = ({ target }) => {
-    setSelectedMonth(Number(target.id));
-    setMonth(Number(target.id));
+    const month = Number(target.id);
+    setSelectedMonth(month);
+    setMonth(month);
+    localStorage.setItem("month", month);
   };
 
   return (
