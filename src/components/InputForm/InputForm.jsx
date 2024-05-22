@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import isInputValidate from "../../assets/js/isInputValidate";
+import { ExpenditureContext } from "../../context/ExpenditureContext";
 import { initExpenditure } from "./constants";
 
-function InputForm({ addExpenditure }) {
+function InputForm() {
   const [expenditure, setExpenditure] = useState(initExpenditure);
+  const addExpenditure = useContext(ExpenditureContext).addExpenditure;
 
   const handleChangeInput = ({ target }) => {
     setExpenditure((prev) => {

@@ -3,17 +3,17 @@ import Expenditures from "../../components/Expenditures";
 import InputForm from "../../components/InputForm";
 import Months from "../../components/Months";
 
-function HomePage({ addExpenditure, setMonth, monthExpenditures }) {
+function HomePage() {
   return (
     <MainWrapper>
       <SectionWrapper>
-        <InputForm addExpenditure={addExpenditure} />
+        <InputForm />
       </SectionWrapper>
       <SectionWrapper>
-        <Months setMonth={setMonth} />
+        <Months />
       </SectionWrapper>
       <SectionWrapper>
-        <Expenditures monthExpenditures={monthExpenditures} />
+        <Expenditures />
       </SectionWrapper>
     </MainWrapper>
   );

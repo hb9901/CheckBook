@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import { ExpenditureContext } from "../../context/ExpenditureContext";
 import { months } from "./costants";
 
-function Months({ setMonth }) {
+function Months() {
   const [selectedMonth, setSelectedMonth] = useState(0);
-
+  const setMonth = useContext(ExpenditureContext).setMonth;
+  
   const handleClickMonth = ({ target }) => {
     setSelectedMonth(Number(target.id));
     setMonth(Number(target.id));

@@ -1,13 +1,14 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import isInputValidate from "../../assets/js/isInputValidate";
+import { ExpenditureContext } from "../../context/ExpenditureContext";
 
-function Expenditure({
-  monthExpenditures,
-  updateExpenditure,
-  deleteExpenditure,
-}) {
+function Expenditure() {
+  const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
+  const updateExpenditure = useContext(ExpenditureContext).updateExpenditure;
+  const deleteExpenditure = useContext(ExpenditureContext).deleteExpenditure;
+  const setMonth = useContext(ExpenditureContext).setMonth;
   const params = useParams();
   const navigate = useNavigate();
   const dateRef = useRef("");
@@ -30,15 +31,18 @@ function Expenditure({
 
     if (!isInputValidate(modifiedExpenditure)) return;
     updateExpenditure(params.id, modifiedExpenditure);
+    setMonth(0);
     navigate("/");
   };
 
   const handleClickDelete = () => {
     deleteExpenditure(params.id);
+    setMonth(0);
     navigate("/");
   };
 
   const handleClickGoBack = () => {
+    setMonth(0);
     navigate("/");
   };
 

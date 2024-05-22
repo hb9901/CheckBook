@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ExpenditureContext } from "../context/ExpenditureContext";
 import HomePage from "../pages/HomePage";
 import PostDetailPage from "../pages/PostDetailPage";
 import { initExpenditures } from "./constants";
@@ -36,30 +37,40 @@ const Router = () => {
   };
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              addExpenditure={addExpenditure}
-              setMonth={setMonth}
-              monthExpenditures={monthExpenditures}
-            />
-          }
-        />
-        <Route
-          path="/:id"
-          element={
-            <PostDetailPage
-              monthExpenditures={monthExpenditures}
-              updateExpenditure={updateExpenditure}
-              deleteExpenditure={deleteExpenditure}
-            />
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <ExpenditureContext.Provider
+      value={{
+        monthExpenditures,
+        addExpenditure,
+        updateExpenditure,
+        deleteExpenditure,
+        setMonth,
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                addExpenditure={addExpenditure}
+                setMonth={setMonth}
+                monthExpenditures={monthExpenditures}
+              />
+            }
+          />
+          <Route
+            path="/:id"
+            element={
+              <PostDetailPage
+                monthExpenditures={monthExpenditures}
+                updateExpenditure={updateExpenditure}
+                deleteExpenditure={deleteExpenditure}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </ExpenditureContext.Provider>
   );
 };
 
