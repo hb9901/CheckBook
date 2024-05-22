@@ -1,5 +1,5 @@
+import { useState } from "react";
 import styled from "styled-components";
-import useStateInput from "../../hooks/useStateInput";
 
 const FormWrapper = styled.div`
   display: flex;
@@ -12,25 +12,43 @@ const InputWrapper = styled.div`
 `;
 
 function InputForm({ addExpenditure }) {
-  const [expenditure, handleExpenditure] = useStateInput({
+  const [expenditure, setExpenditure] = useState({
     id: crypto.randomUUID(),
     date: "",
     item: "",
-    amount: 0,
-    description: 0,
+    amount: "",
+    description: "",
   });
 
-  const handleAdd = (e) => {
+  const handleChangeInput = ({ target }) => {
+    setExpenditure((prev) => {
+      return { ...prev, [target.dataset.type]: target.value };
+    });
+  };
+
+  const handleClickAdd = (e) => {
     e.preventDefault();
     addExpenditure(expenditure);
+    setExpenditure({
+      id: crypto.randomUUID(),
+      date: "",
+      item: "",
+      amount: "",
+      description: "",
+    });
   };
 
   return (
-    <form onSubmit={handleAdd}>
+    <form onSubmit={handleClickAdd}>
       <FormWrapper>
         <InputWrapper>
           <label>날짜</label>
-          <input type="text" data-type="date" onChange={handleExpenditure} />
+          <input
+            type="text"
+            data-type="date"
+            value={expenditure.date}
+            onChange={handleChangeInput}
+          />
         </InputWrapper>
         <InputWrapper>
           <label>항목</label>
@@ -38,7 +56,8 @@ function InputForm({ addExpenditure }) {
             type="text"
             data-type="item"
             placeholder="지출 항목"
-            onChange={handleExpenditure}
+            value={expenditure.item}
+            onChange={handleChangeInput}
           />
         </InputWrapper>
         <InputWrapper>
@@ -47,7 +66,8 @@ function InputForm({ addExpenditure }) {
             type="text"
             data-type="amount"
             placeholder="지출 금액"
-            onChange={handleExpenditure}
+            value={expenditure.amount}
+            onChange={handleChangeInput}
           />
         </InputWrapper>
         <InputWrapper>
@@ -56,7 +76,8 @@ function InputForm({ addExpenditure }) {
             type="text"
             data-type="description"
             placeholder="지출 내용"
-            onChange={handleExpenditure}
+            value={expenditure.description}
+            onChange={handleChangeInput}
           />
         </InputWrapper>
         <button>저장</button>

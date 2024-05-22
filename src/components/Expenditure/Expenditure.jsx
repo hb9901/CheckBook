@@ -54,7 +54,7 @@ function Expenditure({
   const handleClickGoBack = () => {
     navigate("/");
   };
-  
+
   return (
     <Wrapper>
       <InputWrapper>
