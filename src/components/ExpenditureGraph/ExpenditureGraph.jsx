@@ -6,7 +6,7 @@ import {
   makeGraphItems,
   makeItemsExpenditureList,
   makeItemsExpenditureObj,
-} from "./fucntions";
+} from "./functions";
 
 function ExpenditureGraph({ monthExpenditures, curMonth }) {
   const TOTAL_COST = calTotalCost(monthExpenditures);
