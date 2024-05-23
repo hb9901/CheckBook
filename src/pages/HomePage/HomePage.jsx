@@ -1,16 +1,23 @@
 import styled from "styled-components";
+import ExpenditureGraph from "../../components/ExpenditureGraph";
 import Expenditures from "../../components/Expenditures";
 import InputForm from "../../components/InputForm";
 import Months from "../../components/Months";
 
-function HomePage({ addExpenditure, setMonth, monthExpenditures }) {
+function HomePage({ addExpenditure, setMonth, monthExpenditures, curMonth }) {
   return (
     <MainWrapper>
       <SectionWrapper>
         <InputForm addExpenditure={addExpenditure} />
       </SectionWrapper>
       <SectionWrapper>
-        <Months setMonth={setMonth} />
+        <Months setMonth={setMonth} curMonth={curMonth} />
+      </SectionWrapper>
+      <SectionWrapper>
+        <ExpenditureGraph
+          monthExpenditures={monthExpenditures}
+          curMonth={curMonth}
+        />
       </SectionWrapper>
       <SectionWrapper>
         <Expenditures monthExpenditures={monthExpenditures} />

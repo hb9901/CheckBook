@@ -2,10 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { months } from "./costants";
 
-function Months({ setMonth }) {
-  const [selectedMonth, setSelectedMonth] = useState(
-    Number(localStorage.getItem("month"))
-  );
+function Months({ setMonth, curMonth }) {
+  const [selectedMonth, setSelectedMonth] = useState(curMonth);
 
   const handleClickMonth = ({ target }) => {
     const month = Number(target.id);

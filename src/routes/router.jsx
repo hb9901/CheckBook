@@ -45,6 +45,7 @@ const Router = () => {
               addExpenditure={addExpenditure}
               setMonth={setMonth}
               monthExpenditures={monthExpenditures}
+              curMonth={month}
             />
           }
         />
