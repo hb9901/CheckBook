@@ -10,7 +10,10 @@ function InputForm() {
 
   const handleChangeInput = ({ target }) => {
     setExpenditure((prev) => {
-      return { ...prev, [target.dataset.type]: target.value };
+      return {
+        ...prev,
+        [target.dataset.type]: target.dataset.type === "amount" ? Number(target.value): target.value,
+      };
     });
   };
 
