@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ExpenditureGraph from "../../components/ExpenditureGraph";
 import Expenditures from "../../components/Expenditures";
 import InputForm from "../../components/InputForm";
 import Months from "../../components/Months";
@@ -11,6 +12,9 @@ function HomePage() {
       </SectionWrapper>
       <SectionWrapper>
         <Months />
+      </SectionWrapper>
+      <SectionWrapper>
+        <ExpenditureGraph />
       </SectionWrapper>
       <SectionWrapper>
         <Expenditures />
