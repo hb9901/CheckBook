@@ -36,6 +36,7 @@ function ExpenditureProvider({ children }) {
     <ExpenditureContext.Provider
       value={{
         monthExpenditures,
+        curMonth: month,
         addExpenditure,
         updateExpenditure,
         deleteExpenditure,

@@ -4,7 +4,7 @@ import { ExpenditureContext } from "../../context/ExpenditureContext";
 import { months } from "./costants";
 
 function Months() {
-  const [selectedMonth, setSelectedMonth] = useState(Number(localStorage.getItem('month')));
+  const [selectedMonth, setSelectedMonth] = useState(useContext(ExpenditureContext).getMonth);
   const setMonth = useContext(ExpenditureContext).setMonth;
   
   const handleClickMonth = ({ target }) => {
