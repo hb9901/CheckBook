@@ -10,9 +10,10 @@ function isInputValidate(expenditure) {
   };
 
   const isAmountInputValidate = (inputValue) => {
-    return Number(inputValue) > 0;
+    const numbRegExp = /^[1-9][0-9]*$/;
+    return numbRegExp.test(inputValue);
   };
-
+  
   if (!isDateInputValidate(expenditure.date)) {
     alert("날짜 형식을 YYYY-MM-DD로 입력해주세요!");
     return false;
