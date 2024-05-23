@@ -5,7 +5,7 @@ import styled from "styled-components";
 function Expenditures() {
   const { expenditures, month } = useSelector((state) => state.expenditure);
   const monthExpenditures = expenditures.filter((expenditure) => {
-    const expenditureMonth = expenditure.date[6] - 1
+    const expenditureMonth = expenditure.date[6] - 1;
     return expenditureMonth === month;
   });
 
@@ -13,12 +13,13 @@ function Expenditures() {
     <ExpendituresList>
       {monthExpenditures.map((expenditure) => {
         return (
-          <Link
-            key={expenditure.id}
-            to={`/${expenditure.id}`}
-            style={{ textDecorationLine: "none" }}
-          >
-            <Expenditure>
+          <Expenditure key={expenditure.id}>
+            <Link
+              to={`/${expenditure.id}`}
+              style={{
+                textDecorationLine: "none",
+              }}
+            >
               <ListLeft>
                 <Date>{expenditure.date}</Date>
                 <Item>
@@ -28,8 +29,8 @@ function Expenditures() {
               <ListRight>
                 <Amount>{expenditure.amount} 원</Amount>
               </ListRight>
-            </Expenditure>
-          </Link>
+            </Link>
+          </Expenditure>
         );
       })}
     </ExpendituresList>
@@ -51,17 +52,20 @@ const ExpendituresList = styled.ul`
 `;
 
 const Expenditure = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 15px 20px;
-  border-radius: 8px;
-
-  background-color: rgb(249, 249, 249);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
-
   cursor: pointer;
+
+  a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 20px;
+    border-radius: 8px;
+
+    background-color: rgb(249, 249, 249);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+  }
 `;
 
 const ListLeft = styled.div`
