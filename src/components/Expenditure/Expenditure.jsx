@@ -24,7 +24,7 @@ function Expenditure({
       ...expenditure,
       date: dateRef.current.value,
       item: itemRef.current.value,
-      amount: amountRef.current.value,
+      amount: Number(amountRef.current.value),
       description: descriptionRef.current.value,
     };
 
