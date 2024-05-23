@@ -47,7 +47,9 @@ export function makeGraphItems(itemsExpenditureList) {
     }
   });
 
-  return [...items, ["기타", etcTotal]];
+  return itemsExpenditureList.length >= 4
+    ? [...items, ["기타", etcTotal]]
+    : itemsExpenditureList;
 }
 export function calPercentage(cost, TOTAL_COST) {
   const percentage = (cost / TOTAL_COST) * 100;
