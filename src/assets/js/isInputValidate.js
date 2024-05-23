@@ -10,7 +10,8 @@ function isInputValidate(expenditure) {
   };
 
   const isAmountInputValidate = (inputValue) => {
-    return Number(inputValue) > 0;
+    const numbRegExp = /^[1-9][0-9]*$/;
+    return numbRegExp.test(inputValue);
   };
 
   if (!isDateInputValidate(expenditure.date)) {
