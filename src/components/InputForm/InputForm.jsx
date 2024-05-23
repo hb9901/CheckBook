@@ -8,10 +8,16 @@ import { initExpenditure } from "./constants";
 function InputForm() {
   const [expenditure, setExpenditure] = useState(initExpenditure);
   const dispatch = useDispatch();
-  
+
   const handleChangeInput = ({ target }) => {
     setExpenditure((prev) => {
-      return { ...prev, [target.dataset.type]: target.value };
+      return {
+        ...prev,
+        [target.dataset.type]:
+          target.dataset.type === "amount"
+            ? Number(target.value)
+            : target.value,
+      };
     });
   };
 
