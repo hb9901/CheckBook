@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import isInputValidate from "../../assets/js/isInputValidate";
+import DelModal from "../Modal/DelModal";
 
 function Expenditure({
   monthExpenditures,
@@ -14,6 +15,7 @@ function Expenditure({
   const itemRef = useRef("");
   const amountRef = useRef("");
   const descriptionRef = useRef("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const expenditure = monthExpenditures.find(
     (expenditure) => expenditure.id === params.id
@@ -34,8 +36,7 @@ function Expenditure({
   };
 
   const handleClickDelete = () => {
-    deleteExpenditure(params.id);
-    navigate("/");
+    setIsOpen(true);
   };
 
   const handleClickGoBack = () => {
@@ -43,54 +44,64 @@ function Expenditure({
   };
 
   return (
-    <Wrapper>
-      <InputWrapper>
-        <Label>날짜</Label>
-        <Input
-          ref={dateRef}
-          type="text"
-          dateRef
-          defaultValue={expenditure.date}
-          data-type="date"
+    <>
+      {isOpen && (
+        <DelModal
+          setIsOpen={setIsOpen}
+          content={`정말로 이 지출 항목을 삭제하시겠습니까?`}
+          id={params.id}
+          deleteExpenditure={deleteExpenditure}
         />
-      </InputWrapper>
-      <InputWrapper>
-        <Label>항목</Label>
-        <Input
-          ref={itemRef}
-          type="text"
-          defaultValue={expenditure.item}
-          data-type="item"
-          placeholder="지출 항목"
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <Label>금액</Label>
-        <Input
-          ref={amountRef}
-          type="number"
-          defaultValue={expenditure.amount}
-          data-type="amount"
-          placeholder="지출 금액"
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <Label>내용</Label>
-        <Input
-          ref={descriptionRef}
-          type="text"
-          defaultValue={expenditure.description}
-          data-type="description"
-          placeholder="지출 내용"
-        />
-      </InputWrapper>
-      <br />
-      <ButtonWrapper>
-        <ModifyButton onClick={handleClickModify}>수정</ModifyButton>
-        <DeleletButton onClick={handleClickDelete}>삭제</DeleletButton>
-        <GoBackButton onClick={handleClickGoBack}>뒤로 가기</GoBackButton>
-      </ButtonWrapper>
-    </Wrapper>
+      )}
+      <Wrapper>
+        <InputWrapper>
+          <Label>날짜</Label>
+          <Input
+            ref={dateRef}
+            type="text"
+            dateRef
+            defaultValue={expenditure.date}
+            data-type="date"
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Label>항목</Label>
+          <Input
+            ref={itemRef}
+            type="text"
+            defaultValue={expenditure.item}
+            data-type="item"
+            placeholder="지출 항목"
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Label>금액</Label>
+          <Input
+            ref={amountRef}
+            type="number"
+            defaultValue={expenditure.amount}
+            data-type="amount"
+            placeholder="지출 금액"
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Label>내용</Label>
+          <Input
+            ref={descriptionRef}
+            type="text"
+            defaultValue={expenditure.description}
+            data-type="description"
+            placeholder="지출 내용"
+          />
+        </InputWrapper>
+        <br />
+        <ButtonWrapper>
+          <ModifyButton onClick={handleClickModify}>수정</ModifyButton>
+          <DeleletButton onClick={handleClickDelete}>삭제</DeleletButton>
+          <GoBackButton onClick={handleClickGoBack}>뒤로 가기</GoBackButton>
+        </ButtonWrapper>
+      </Wrapper>
+    </>
   );
 }
 
