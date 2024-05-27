@@ -61,7 +61,11 @@ const expenditureSlice = createSlice({
   initialState,
   reducers: {
     addExpenditure: (state, action) => {
-      state.expenditures = [...state.expenditures, action.payload];
+      const newExpenditure = {
+        ...action.payload,
+        id:crypto.randomUUID(),
+      }
+      state.expenditures = [...state.expenditures, newExpenditure];
     },
 
     updateExpenditure: (state, action) => {
