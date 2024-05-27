@@ -21,7 +21,10 @@ function InputForm() {
     e.preventDefault();
 
     if (!isInputValidate(expenditure)) return;
-    addExpenditure(expenditure);
+    addExpenditure({
+      ...expenditure,
+      id: crypto.randomUUID(),
+    });
     setExpenditure(initExpenditure);
   };
 
