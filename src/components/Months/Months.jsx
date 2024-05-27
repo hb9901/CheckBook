@@ -24,7 +24,7 @@ function Months() {
             id={index}
             onClick={handleClickMonth}
             value={month}
-            isSelected={index === selectedMonth}
+            $isSelected={index === selectedMonth}
           >
             {month}
           </Month>
@@ -64,8 +64,8 @@ const Month = styled.li`
   font-weight: 600;
 
   cursor: pointer;
-  background-color: ${({ isSelected }) => (isSelected ? "#2EC4B6" : "#F6F7FA")};
-  color: ${({ isSelected }) => (isSelected ? "white" : "black")};
+  background-color: ${({ $isSelected }) => ($isSelected ? "#2EC4B6" : "#F6F7FA")};
+  color: ${({ $isSelected }) => ($isSelected ? "white" : "black")};
 
   &:hover {
     background-color: #2ec4b6;
