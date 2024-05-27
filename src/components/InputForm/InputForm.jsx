@@ -10,7 +10,10 @@ function InputForm({ addExpenditure }) {
     setExpenditure((prev) => {
       return {
         ...prev,
-        [target.dataset.type]: target.dataset.type === "amount"? Number(target.value) : target.value,
+        [target.dataset.type]:
+          target.dataset.type === "amount"
+            ? Number(target.value)
+            : target.value,
       };
     });
   };
@@ -20,7 +23,10 @@ function InputForm({ addExpenditure }) {
 
     if (!isInputValidate(expenditure)) return;
     addExpenditure(expenditure);
-    setExpenditure(initExpenditure);
+    setExpenditure({
+      ...initExpenditure,
+      id: crypto.randomUUID(),
+    });
   };
 
   return (
