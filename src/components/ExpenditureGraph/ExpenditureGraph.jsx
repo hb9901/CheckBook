@@ -23,8 +23,8 @@ function ExpenditureGraph({ monthExpenditures, curMonth }) {
           return (
             <GraphItem
               key={index}
-              width={calPercentage(graphItem[1], TOTAL_COST)}
-              index={index}
+              $width={calPercentage(graphItem[1], TOTAL_COST)}
+              $index={index}
             />
           );
         })}
@@ -33,7 +33,7 @@ function ExpenditureGraph({ monthExpenditures, curMonth }) {
         {graphItems.map((graphItem, index) => {
           return (
             <Item key={index}>
-              <ItemColor index={index} />
+              <ItemColor $index={index} />
               {`${graphItem[0]}: ${makeCostStr(
                 graphItem[1]
               )} 원 (${calPercentage(graphItem[1], TOTAL_COST)}%)`}
@@ -69,9 +69,9 @@ const Graph = styled.div`
 
 const GraphItem = styled.div`
   height: 100%;
-  ${({ width }) => `width: ${width}%;`}
-  ${({ index }) => {
-    switch (index) {
+  ${({ $width }) => `width: ${$width}%;`}
+  ${({ $index }) => {
+    switch ($index) {
       case 0:
         return `background-color: rgb(0, 123, 255);`;
       case 1:
@@ -113,8 +113,8 @@ const ItemColor = styled.div`
 
   margin-right: 8px;
 
-  ${({ index }) => {
-    switch (index) {
+  ${({ $index }) => {
+    switch ($index) {
       case 0:
         return `background-color: rgb(0, 123, 255);`;
       case 1:
