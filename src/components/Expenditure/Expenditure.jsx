@@ -59,7 +59,6 @@ function Expenditure({
           <Input
             ref={dateRef}
             type="text"
-            dateRef
             defaultValue={expenditure.date}
             data-type="date"
           />
