@@ -1,39 +1,84 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ExpenditureContext } from "../../context/ExpenditureContext";
 
 function Expenditures() {
   const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
+  const [category, setCategory] = useState("");
 
+  category &&
+    monthExpenditures.sort(function compare(a, b) {
+      if (a[category] > b[category]) return -1;
+      if (a[category] < b[category]) return 1;
+      return 0;
+    });
+
+  const handleChangeDropMenu = ({ target }) => {
+    setCategory(target.value);
+  };
   return (
-    <ExpendituresList>
-      {monthExpenditures.map((expenditure) => {
-        return (
-          <Link
-            key={expenditure.id}
-            to={`/${expenditure.id}`}
-            style={{ textDecorationLine: "none" }}
-          >
-            <Expenditure>
-              <ListLeft>
-                <Date>{expenditure.date}</Date>
-                <Item>
-                  {expenditure.item} - {expenditure.description}
-                </Item>
-              </ListLeft>
-              <ListRight>
-                <Amount>{expenditure.amount} 원</Amount>
-              </ListRight>
-            </Expenditure>
-          </Link>
-        );
-      })}
-    </ExpendituresList>
+    <>
+      <SelectWrapper>
+        <Select onChange={handleChangeDropMenu} value={category}>
+          <Option value="date">시간순</Option>
+          <Option value="item">종류별</Option>
+        </Select>
+      </SelectWrapper>
+      <ExpendituresList>
+        {monthExpenditures.map((expenditure) => {
+          return (
+            <Link
+              key={expenditure.id}
+              to={`/${expenditure.id}`}
+              style={{ textDecorationLine: "none" }}
+            >
+              <Expenditure>
+                <ListLeft>
+                  <Date>{expenditure.date}</Date>
+                  <Item>
+                    {expenditure.item} - {expenditure.description}
+                  </Item>
+                </ListLeft>
+                <ListRight>
+                  <Amount>{expenditure.amount} 원</Amount>
+                </ListRight>
+              </Expenditure>
+            </Link>
+          );
+        })}
+      </ExpendituresList>
+    </>
   );
 }
 
 export default Expenditures;
+
+const SelectWrapper = styled.section`
+  display: flex;
+  justify-content: end;
+
+  padding-right: 20px;
+  padding-bottom: 20px;
+`;
+
+const Select = styled.select`
+  padding: 5px 10px;
+
+  border-radius: 5px;
+  border: 2px solid rgb(0, 123, 255);
+  font-weight: bold;
+
+  color: rgb(0, 123, 255);
+  background-color: rgb(249, 249, 249);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+  
+  &:focus {
+    outline: none;
+  }
+`;
+
+const Option = styled.option``;
 
 const ExpendituresList = styled.ul`
   display: flex;
