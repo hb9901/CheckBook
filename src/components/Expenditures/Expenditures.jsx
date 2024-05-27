@@ -20,8 +20,8 @@ function Expenditures({ monthExpenditures }) {
     <>
       <SelectWrapper>
         <Select onChange={handleChangeDropMenu} value={category}>
-          <Option value="date">시간순</Option>
-          <Option value="item">종류별</Option>
+          <option value="date">시간순</option>
+          <option value="item">종류별</option>
         </Select>
       </SelectWrapper>
       <ExpendituresList>
@@ -67,14 +67,19 @@ const Select = styled.select`
   padding: 5px 10px;
 
   border-radius: 5px;
-  border: 2px solid black;
+  border: 2px solid rgb(0, 123, 255);
   font-weight: bold;
 
+  color: rgb(0, 123, 255);
   background-color: rgb(249, 249, 249);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
-`;
 
-const Option = styled.option``;
+  cursor: pointer;
+
+  &:focus{
+    outline: none;
+  }
+`;
 
 const ExpendituresList = styled.ul`
   display: flex;
