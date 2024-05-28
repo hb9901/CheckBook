@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Expenditures({ monthExpenditures }) {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("date");
 
   category &&
     monthExpenditures.sort(function compare(a, b) {
-      if (a[category] > b[category]) return -1;
-      if (a[category] < b[category]) return 1;
+      if (a[category] > b[category]) return 1;
+      if (a[category] < b[category]) return -1;
       return 0;
     });
 
