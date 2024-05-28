@@ -1,8 +1,8 @@
+import isInputValidate from "@/assets/js/isInputValidate";
+import { addExpenditure } from "@/redux/slices/expenditures.slice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import isInputValidate from "../../assets/js/isInputValidate";
-import { addExpenditure } from "../../redux/slices/expenditures.slice";
 import { initExpenditure } from "./constants";
 
 function InputForm() {

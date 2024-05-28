@@ -1,7 +1,7 @@
+import { setMonth } from "@/redux/slices/expenditures.slice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { setMonth } from "../../redux/slices/expenditures.slice";
 import { months } from "./costants";
 
 function Months() {

@@ -1,9 +1,9 @@
+import isInputValidate from "@/assets/js/isInputValidate";
+import { deleteExpenditure, updateExpenditure } from "@/redux/slices/expenditures.slice";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import isInputValidate from "../../assets/js/isInputValidate";
-import { deleteExpenditure, updateExpenditure } from "../../redux/slices/expenditures.slice";
 
 function Expenditure() {
   const params = useParams();
