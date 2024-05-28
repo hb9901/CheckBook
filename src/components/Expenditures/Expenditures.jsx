@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 function Expenditures() {
   const { expenditures, month } = useSelector((state) => state.expenditure);
-   const [category, setCategory] = useState("");
+   const [category, setCategory] = useState("date");
   const monthExpenditures = expenditures.filter((expenditure) => {
     const expenditureMonth = expenditure.date[6] - 1;
     return expenditureMonth === month;
@@ -13,8 +13,8 @@ function Expenditures() {
 
 category &&
   monthExpenditures.sort(function compare(a, b) {
-    if (a[category] > b[category]) return -1;
-    if (a[category] < b[category]) return 1;
+    if (a[category] > b[category]) return 1;
+    if (a[category] < b[category]) return -1;
     return 0;
   });
 
