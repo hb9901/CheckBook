@@ -2,10 +2,8 @@ export function calTotalCost(monthExpenditures) {
   let total = 0;
 
   monthExpenditures.forEach((expenditure) => {
-    console.log(expenditure.amount)
     total += Number(expenditure.amount);
   });
-  console.log(total);
   return total;
 }
 
