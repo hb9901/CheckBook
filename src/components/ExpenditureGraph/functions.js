@@ -2,7 +2,7 @@ export function calTotalCost(monthExpenditures) {
   let total = 0;
 
   monthExpenditures.forEach((expenditure) => {
-    total += expenditure.amount;
+    total += Number(expenditure.amount);
   });
 
   return total;
@@ -47,7 +47,9 @@ export function makeGraphItems(itemsExpenditureList) {
     }
   });
 
-  return itemsExpenditureList.length >= 4 ? [...items, ["기타", etcTotal]]: itemsExpenditureList;
+  return itemsExpenditureList.length >= 4
+    ? [...items, ["기타", etcTotal]]
+    : itemsExpenditureList;
 }
 export function calPercentage(cost, TOTAL_COST) {
   const percentage = (cost / TOTAL_COST) * 100;
