@@ -5,7 +5,7 @@ import { ExpenditureContext } from "../../context/ExpenditureContext";
 
 function Expenditures() {
   const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("date");
 
   category &&
     monthExpenditures.sort(function compare(a, b) {
