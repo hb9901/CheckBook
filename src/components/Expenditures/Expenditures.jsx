@@ -1,7 +1,7 @@
+import { ExpenditureContext } from "@/context/ExpenditureContext";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
 
 function Expenditures() {
   const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;

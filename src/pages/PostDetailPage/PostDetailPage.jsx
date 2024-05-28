@@ -1,4 +1,4 @@
-import Expenditure from "../../components/Expenditure";
+import Expenditure from "@/components/Expenditure";
 
 function PostDetailPage() {
   return <Expenditure />;

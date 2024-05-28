@@ -1,13 +1,13 @@
+import { ExpenditureContext } from "@/context/ExpenditureContext";
 import { useContext } from "react";
 import styled from "styled-components";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
 import {
-  calPercentage,
-  calTotalCost,
-  makeCostStr,
-  makeGraphItems,
-  makeItemsExpenditureList,
-  makeItemsExpenditureObj,
+    calPercentage,
+    calTotalCost,
+    makeCostStr,
+    makeGraphItems,
+    makeItemsExpenditureList,
+    makeItemsExpenditureObj,
 } from "./functions";
 
 function ExpenditureGraph() {

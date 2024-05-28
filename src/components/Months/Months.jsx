@@ -1,6 +1,6 @@
+import { ExpenditureContext } from "@/context/ExpenditureContext";
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
 import { months } from "./costants";
 
 function Months() {

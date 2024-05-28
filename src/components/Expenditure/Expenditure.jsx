@@ -1,8 +1,8 @@
+import isInputValidate from "@/assets/js/isInputValidate";
+import { ExpenditureContext } from "@/context/ExpenditureContext";
 import { useContext, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import isInputValidate from "../../assets/js/isInputValidate";
-import { ExpenditureContext } from "../../context/ExpenditureContext";
 
 function Expenditure() {
   const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
