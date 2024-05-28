@@ -13,9 +13,7 @@ function InputForm() {
     setExpenditure((prev) => {
       return {
         ...prev,
-        [target.dataset.type]:
-          target.dataset.type === "amount"
-            ? Number(target.value)
+        [target.dataset.type]
             : target.value,
       };
     });
@@ -61,7 +59,7 @@ function InputForm() {
             id="amount"
             data-type="amount"
             placeholder="지출 금액"
-            value={expenditure.amount}
+            value={Number(expenditure.amount)}
             onChange={handleChangeInput}
           />
         </InputWrapper>
