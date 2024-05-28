@@ -31,7 +31,7 @@ function Expenditure({
     };
 
     if (!isInputValidate(modifiedExpenditure)) return;
-    updateExpenditure(params.id, modifiedExpenditure);
+    updateExpenditure(modifiedExpenditure);
     navigate("/");
   };
 
