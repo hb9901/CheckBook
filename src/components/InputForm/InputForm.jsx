@@ -1,6 +1,6 @@
+import isInputValidate from "@/assets/js/isInputValidate";
 import { useState } from "react";
 import styled from "styled-components";
-import isInputValidate from "../../assets/js/isInputValidate";
 import { initExpenditure } from "./constants";
 
 function InputForm({ addExpenditure }) {

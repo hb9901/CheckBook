@@ -1,7 +1,8 @@
+
+import isInputValidate from "@/assets/js/isInputValidate";
 import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import isInputValidate from "../../assets/js/isInputValidate";
 import DelModal from "../Modal/DelModal";
 
 function Expenditure({
