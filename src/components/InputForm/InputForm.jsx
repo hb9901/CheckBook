@@ -107,6 +107,11 @@ const Input = styled.input`
   border: 1px solid rgb(221, 221, 221);
   border-radius: 4px;
   font-size: 14px;
+
+  -webkit-ime-mode: active;
+  -moz-ime-mode: active;
+  -ms-ime-mode: active;
+  ime-mode: active;
 `;
 
 const Button = styled.button`
