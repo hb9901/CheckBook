@@ -4,9 +4,10 @@ import { ExpenditureContext } from "../../context/ExpenditureContext";
 import { months } from "./costants";
 
 function Months() {
-  const [selectedMonth, setSelectedMonth] = useState(useContext(ExpenditureContext).getMonth);
+  const [selectedMonth, setSelectedMonth] = useState(useContext(ExpenditureContext).curMonth);
   const setMonth = useContext(ExpenditureContext).setMonth;
   
+  console.log(selectedMonth);
   const handleClickMonth = ({ target }) => {
     const month = Number(target.id);
     setSelectedMonth(month);
