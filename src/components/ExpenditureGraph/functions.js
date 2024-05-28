@@ -2,7 +2,7 @@ export function calTotalCost(monthExpenditures) {
   let total = 0;
 
   monthExpenditures.forEach((expenditure) => {
-    total += expenditure.amount;
+    total += Number(expenditure.amount);
   });
 
   return total;
