@@ -26,7 +26,7 @@ function Expenditure({
       ...expenditure,
       date: dateRef.current.value,
       item: itemRef.current.value,
-      amount: Number(amountRef.current.value),
+      amount: amountRef.current.value,
       description: descriptionRef.current.value,
     };
 
@@ -78,7 +78,7 @@ function Expenditure({
           <Input
             ref={amountRef}
             type="number"
-            defaultValue={expenditure.amount}
+            defaultValue={Number(expenditure.amount)}
             data-type="amount"
             placeholder="지출 금액"
           />
