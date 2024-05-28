@@ -47,7 +47,7 @@ $ npm run dev
 
 * 정렬
 
-  ![월선택](https://github.com/hb9901/CheckBook/assets/50387658/fba7eb41-fde8-445f-94e7-81e00c2e90f4)
+  ![정렬](https://github.com/hb9901/CheckBook/assets/50387658/17ec0b9a-d7bd-4a1b-a92f-b7f3f8c7a421)
 
 ### 상세 페이지
 
