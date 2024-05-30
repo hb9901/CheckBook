@@ -3,6 +3,7 @@ import { ExpenditureContext } from "@/context/expenditure.context";
 import { useContext, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useModal } from "../../context/modal.context";
 
 function Expenditure() {
   const monthExpenditures = useContext(ExpenditureContext).monthExpenditures;
@@ -14,6 +15,7 @@ function Expenditure() {
   const itemRef = useRef("");
   const amountRef = useRef("");
   const descriptionRef = useRef("");
+  const modal = useModal();
 
   const expenditure = monthExpenditures.find(
     (expenditure) => expenditure.id === params.id
@@ -33,9 +35,17 @@ function Expenditure() {
     navigate("/");
   };
 
-  const handleClickDelete = () => {
+  const handleClickModalDelete = () => {
     deleteExpenditure(params.id);
+    modal.close();
     navigate("/");
+  };
+
+  const handleClickDelete = () => {
+    modal.open({
+      content: "정말로 이 지출 항목을 삭제하시겠습니까?",
+      handleClickModalDelete: handleClickModalDelete,
+    });
   };
 
   const handleClickGoBack = () => {
