@@ -1,4 +1,4 @@
-import { ExpenditureContext } from "@/context/ExpenditureContext";
+import { ExpenditureContext } from "@/context/expenditure.context";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -73,6 +73,7 @@ const Select = styled.select`
   background-color: rgb(249, 249, 249);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
   
+  cursor: pointer;
   &:focus {
     outline: none;
   }

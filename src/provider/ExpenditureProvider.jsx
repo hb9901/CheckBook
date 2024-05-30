@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExpenditureContext } from "../context/ExpenditureContext";
+import { ExpenditureContext } from "../context/expenditure.context";
 import { initExpenditures } from "./constants";
 
 function ExpenditureProvider({ children }) {

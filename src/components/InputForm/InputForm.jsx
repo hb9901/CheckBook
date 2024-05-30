@@ -1,5 +1,5 @@
 import isInputValidate from "@/assets/js/isInputValidate";
-import { ExpenditureContext } from "@/context/ExpenditureContext";
+import { ExpenditureContext } from "@/context/expenditure.context";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { initExpenditure } from "./constants";

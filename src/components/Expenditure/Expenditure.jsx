@@ -1,5 +1,5 @@
 import isInputValidate from "@/assets/js/isInputValidate";
-import { ExpenditureContext } from "@/context/ExpenditureContext";
+import { ExpenditureContext } from "@/context/expenditure.context";
 import { useContext, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
